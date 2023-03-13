@@ -1,7 +1,9 @@
-import { getOrders, getMetals, getSizes, getStyles } from "./database.js"
+import { getOrders, getMetals, getSizes, getStyles, getTypes } from "./database.js"
 const metals = getMetals()
-const sizes = getMetals()
-const styles = getMetals()
+const sizes = getSizes()
+const styles = getStyles()
+const types = getTypes()
+
 
 
 
@@ -20,11 +22,26 @@ const buildOrderListItem = (order) => {
         return style.id === order.styleId
     })
 
-    const totalCost = foundMetal.price + foundSize.price + foundStyle.price
+    const foundType = types.find((type) => {
+        return type.id === order.typeId
+    })
+
+    let totalCost = 0
+
+    if(foundMetal && foundSize && foundStyle && foundType){
+        totalCost = (foundMetal.price + foundSize.price + foundStyle.price) * foundType.priceAdjustment
+    }
+
+    else{window.alert("Please select an option for each feature to submit an order")
+        location.reload()
+        return
+    }
+
 
     const costString = totalCost.toLocaleString("en-US", {
         style: "currency",
-        currency: "USD"
+        currency: "USD",
+        maximumFractionDigits: 0
     })
     
     return `<li>

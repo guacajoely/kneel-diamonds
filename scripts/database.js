@@ -1,11 +1,11 @@
-/*
-
-    This module contains all of the data, or state, for the
-    application. It exports two functions that allow other
-    modules to get copies of the state.
-
-*/
 const database = {
+
+    types: [
+        { id: 1, name: "Ring", priceAdjustment: 1 },
+        { id: 2, name: "Earings", priceAdjustment: 2 },
+        { id: 3, name: "Necklace", priceAdjustment: 4 }
+    ],
+
     styles: [
         { id: 1, style: "Classic", price: 500 },
         { id: 2, style: "Modern", price: 710 },
@@ -28,6 +28,7 @@ const database = {
     customOrders: [
         {
             id: 1,
+            typeId: 1,
             metalId: 3,
             sizeId: 2,
             styleId: 3,
@@ -41,6 +42,10 @@ const database = {
 
 
 // Other modules invoke these function to GET their state.
+export const getTypes = () => {
+    return database.types.map(type => ({...type}))
+}
+
 export const getMetals = () => {
     return database.metals.map(metal => ({...metal}))
 }
@@ -60,6 +65,12 @@ export const getOrders = () => {
 
 
 //Now you need to export functions whose responsibility is to SET state.
+
+export const setType = (id) => {
+    database.orderBuilder.typeId = id
+    console.log(database.orderBuilder)
+}
+
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
     console.log(database.orderBuilder)

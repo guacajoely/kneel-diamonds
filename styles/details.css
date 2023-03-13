@@ -15,3 +15,13 @@
     width: 600px;
 }
 
+.types {
+    margin: 40px 0 0 20px;
+}
+
+.types > ul > li{
+    list-style-type: none;
+    display: inline;
+    margin: 10px;
+  }
+
