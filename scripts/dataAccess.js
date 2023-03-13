@@ -21,6 +21,11 @@ export const getOrders = () => {
     return database.customOrders.map(order => ({...order}))
 }
 
+export const getOrderBuilder = () => {
+    return database.orderBuilder
+}
+
+
 
 
 //Now you need to export functions whose responsibility is to SET state.
@@ -28,21 +33,25 @@ export const getOrders = () => {
 export const setType = (id) => {
     database.orderBuilder.typeId = id
     console.log(database.orderBuilder)
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
     console.log(database.orderBuilder)
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setSize = (id) => {
     database.orderBuilder.sizeId = id
     console.log(database.orderBuilder)
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 export const setStyle = (id) => {
     database.orderBuilder.styleId = id
     console.log(database.orderBuilder)
+    document.dispatchEvent(new CustomEvent("stateChanged"))
 }
 
 
