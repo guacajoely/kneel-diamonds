@@ -44,12 +44,9 @@ const buildOrderListItem = (order) => {
         maximumFractionDigits: 0
     })
     
-    return `<li>
-                Order #${order.id} cost ${costString}
-            </li>`
+    return `<li>Order #${order.id} cost ${costString}</li>`
 
 }
-
 
 
 

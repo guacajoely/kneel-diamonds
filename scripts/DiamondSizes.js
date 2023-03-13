@@ -17,15 +17,11 @@ export const DiamondSizes = () => {
         const currentOrder = getOrderBuilder()
 
         if(currentOrder.sizeId === size.id){
-            return `<li>
-                <input type="radio" name="size" value="${size.id}" checked="checked"/> ${size.carets}
-            </li>`
-            }
+            return `<li><input type="radio" name="size" value="${size.id}" checked="checked"/> ${size.carets}</li>`
+        }
 
         else{
-            return `<li>
-            <input type="radio" name="size" value="${size.id}"/> ${size.carets}
-        </li>`
+            return `<li><input type="radio" name="size" value="${size.id}"/> ${size.carets}</li>`
         }
     })
 
